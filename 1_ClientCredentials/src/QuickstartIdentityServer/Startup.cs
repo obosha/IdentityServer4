@@ -43,10 +43,7 @@ namespace QuickstartIdentityServer
             app.UseDeveloperExceptionPage();
 
             app.UseIdentityServer();
-
-			loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-			loggerFactory.AddDebug();
-
+						
 			app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
 			{
 				Authority = "https://localhost:5443",
