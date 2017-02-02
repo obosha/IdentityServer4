@@ -14,8 +14,13 @@ namespace QuickstartIdentityServer
             Console.Title = "IdentityServer";
 
             var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseUrls("http://localhost:5000")
+                .UseKestrel(
+                            options =>
+                            {
+	                            options.UseHttps("localhost.pfx", "DominickRocks!");
+	                            //options.UseConnectionLogging();
+                            })
+                .UseUrls("https://localhost:5443")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
